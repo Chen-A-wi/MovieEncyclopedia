@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "MovieEncyclopedia"
-include ':app'
+include (":app")

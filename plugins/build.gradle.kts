@@ -1,10 +1,15 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("java-library")
-    alias(libs.plugins.org.jetbrains.kotlin.jvm)
+    `kotlin-dsl`
+    `kotlin-dsl-precompiled-script-plugins`
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation(libs.gradle.tools.build)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 }

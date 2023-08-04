@@ -1,8 +1,11 @@
+@file:Suppress("UnstableApiUsage")
+
 pluginManagement {
     repositories {
         google()
         mavenCentral()
         gradlePluginPortal()
+        includeBuild("plugins")
     }
 }
 dependencyResolutionManagement {
@@ -14,4 +17,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MovieEncyclopedia"
 include (":app")
-include(":plugins")

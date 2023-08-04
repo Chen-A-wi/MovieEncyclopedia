@@ -1,5 +1,16 @@
 [versions]
-org-jetbrains-kotlin-jvm = "1.7.20"
+core-ktx = "1.10.1"
+lifecycle-runtime-ktx = "2.6.1"
+build-gradle = "8.0.2"
+kotlin-gradle-plugin = "1.8.20"
+
 [libraries]
+gradle-tools-build = { module = "com.android.tools.build:gradle", version.ref = "build-gradle" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-gradle-plugin" }
+
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+
+[bundles]
+
 [plugins]
-org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }

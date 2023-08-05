@@ -13,3 +13,7 @@ buildscript {
         classpath(libs.gradle.tools.build)
     }
 }
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+}

@@ -8,6 +8,15 @@ repositories {
     mavenCentral()
 }
 
+gradlePlugin {
+    plugins {
+        create("LibCommonPlugin") {
+            id = "plugins.lib-common"
+            implementationClass = "com.awilab.plugins.plugins.LibCommonPlugin"
+        }
+    }
+}
+
 dependencies {
     implementation(libs.gradle.tools.build)
     implementation(libs.kotlin.gradle.plugin)

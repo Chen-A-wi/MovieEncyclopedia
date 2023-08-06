@@ -1,5 +1,20 @@
 plugins {
-    id("com.android.application") version "8.0.2" apply false
-    id("com.android.library") version "8.0.2" apply false
-    id("org.jetbrains.kotlin.android") version "1.7.20" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.jetbrains.kotlin) apply false
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath(libs.gradle.tools.build)
+        classpath(libs.android.junit5)
+    }
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

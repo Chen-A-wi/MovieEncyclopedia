@@ -10,9 +10,13 @@ repositories {
 
 gradlePlugin {
     plugins {
-        create("LibCommonPlugin") {
-            id = "plugins.lib-common"
-            implementationClass = "com.awilab.plugins.plugins.LibCommonPlugin"
+        create("AppPlugin") {
+            id = "plugins.app"
+            implementationClass = "com.awilab.plugins.plugins.AppPlugin"
+        }
+        create("BaseLibPlugin") {
+            id = "plugins.base-lib"
+            implementationClass = "com.awilab.plugins.plugins.BaseLibPlugin"
         }
     }
 }

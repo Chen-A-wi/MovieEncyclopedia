@@ -1,7 +1,12 @@
 [versions]
 activity-compose = "1.7.2"
+android-junit5 = "1.9.3.0"
 compose-bom = "2023.06.01"
 build-gradle = "8.1.0"
+espresso-core = "3.5.1"
+junit = "1.1.5"
+junit-platform-console = "1.9.3"
+junit5 = "5.9.3"
 kotlin-gradle-plugin = "1.8.20"
 kotlin-bom = "1.8.0"
 core-ktx = "1.10.1"
@@ -9,8 +14,10 @@ lifecycle-runtime-ktx = "2.6.1"
 
 [libraries]
 # Project
+android-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "android-junit5" }
 gradle-tools-build = { module = "com.android.tools.build:gradle", version.ref = "build-gradle" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-gradle-plugin" }
+
 # Kotlin
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin-bom" }
 
@@ -24,12 +31,28 @@ compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
-compose-bom = { module = "androidx.compose:compose-bom",version.ref="compose-bom" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+debug-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+debug-compose-tool = { module = "androidx.compose.ui:ui-tooling" }
+
+# Junit
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
+junit-platform-console = { module = "org.junit.platform:junit-platform-console", version.ref = "junit-platform-console" }
+
+# Android Test
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
 
 [bundles]
 compose = [
     "compose-activity", "compose-ui", "compose-ui-graphics", "compose-ui-preview", "compose-material3"
 ]
+androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
+debug = ["debug-compose-manifest", "debug-compose-tool"]
+test-runtime-only = ["junit-jupiter-engine","junit-platform-console"]
+android-test = ["androidx-junit", "androidx-espresso-core", "androidx-compose-ui-test"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "build-gradle" }

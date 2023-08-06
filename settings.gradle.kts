@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MovieEncyclopedia"
 include (":app")
+include(":data")

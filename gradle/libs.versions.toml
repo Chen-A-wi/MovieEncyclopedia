@@ -7,8 +7,8 @@ espresso-core = "3.5.1"
 junit = "1.1.5"
 junit-platform-console = "1.9.3"
 junit5 = "5.9.3"
-kotlin-gradle-plugin = "1.8.20"
-kotlin-bom = "1.8.0"
+kotlin-gradle-plugin = "1.9.0"
+kotlin-bom = "1.8.22"
 core-ktx = "1.10.1"
 lifecycle-runtime-ktx = "2.6.1"
 junit-junit = "4.13.2"
@@ -64,3 +64,4 @@ android-test = ["androidx-junit", "androidx-espresso-core", "androidx-compose-ui
 android-application = { id = "com.android.application", version.ref = "build-gradle" }
 android-library = { id = "com.android.library", version.ref = "build-gradle" }
 jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-gradle-plugin" }
+jetbrains-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-gradle-plugin" }

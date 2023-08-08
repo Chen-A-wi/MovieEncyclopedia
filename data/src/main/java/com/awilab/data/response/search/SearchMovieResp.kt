@@ -12,7 +12,7 @@ data class SearchMovieResp(
     @SerialName("total_pages")
     val totalPages: Int? = 0,
     @SerialName("total_results")
-    val totalResults: Int? = 0
+    val totalResults: Int? = 0,
 ) {
     @Serializable
     data class Result(
@@ -43,6 +43,6 @@ data class SearchMovieResp(
         @SerialName("vote_average")
         val voteAverage: Double? = 0.0,
         @SerialName("vote_count")
-        val voteCount: Int? = 0
+        val voteCount: Int? = 0,
     )
 }

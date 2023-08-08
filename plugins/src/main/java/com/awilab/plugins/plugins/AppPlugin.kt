@@ -15,6 +15,7 @@ class AppPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 plugins.run {
                     apply("org.jetbrains.kotlin.android")
+                    apply("quality.ktlint")
                 }
 
                 defaultConfig {

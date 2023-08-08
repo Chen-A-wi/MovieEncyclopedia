@@ -17,6 +17,7 @@ class BaseLibPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 plugins.run {
                     apply("org.jetbrains.kotlin.android")
+                    apply("quality.ktlint")
                 }
 
                 defaultConfig {

@@ -8,4 +8,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+    implementation(libs.retrofit2)
+
+    testImplementation(libs.test.mockwebserver)
 }

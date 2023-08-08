@@ -1,6 +1,6 @@
 package com.awilab.plugins.quality
 
-val ktlint by configurations.creating
+val ktlint: Configuration by configurations.creating
 
 dependencies {
     ktlint("com.pinterest:ktlint:0.49.1") {

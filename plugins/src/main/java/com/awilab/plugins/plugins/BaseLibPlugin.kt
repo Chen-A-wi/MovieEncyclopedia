@@ -45,9 +45,12 @@ class BaseLibPlugin : Plugin<Project> {
                     "implementation"(libs.bundles.androidx)
                     "implementation"(libs.androidx.appcompat)
                     "implementation"(libs.material)
+                    "implementation"(libs.koin)
+
                     "testImplementation"(libs.junit)
                     "androidTestImplementation"(libs.androidx.junit)
                     "androidTestImplementation"(libs.androidx.espresso.core)
+                    "testImplementation"(libs.bundles.test.koin)
                 }
             }
         }

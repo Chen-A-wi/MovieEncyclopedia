@@ -4,8 +4,9 @@ plugins {
 }
 
 android {
-    namespace = "com.awilab.common"
+    namespace = "com.awilab.testing"
 }
 
 dependencies {
+    implementation(project(":data"))
 }

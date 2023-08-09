@@ -1,18 +1,18 @@
 [versions]
 composeActivity = "1.7.2"
-android-junit5 = "1.9.3.0"
-compose-bom = "2023.06.01"
-build-gradle = "8.1.0"
-espresso-core = "3.5.1"
+androidJunit5 = "1.9.3.0"
+composeBom = "2023.06.01"
+buildGradle = "8.1.0"
+espressoCore = "3.5.1"
 junit = "1.1.5"
-junit-platform-console = "1.9.3"
+junitPlatformConsole = "1.9.3"
 junit5 = "5.9.3"
 kotlin = "1.9.0"
-kotlin-bom = "1.8.22"
-core-ktx = "1.10.1"
+kotlinBom = "1.8.22"
+coreKtx = "1.10.1"
 kotlinxSerialization = "1.5.1"
-lifecycle-runtime-ktx = "2.6.1"
-junit-junit = "4.13.2"
+lifecycleRuntimeKtx = "2.6.1"
+junitJunit = "4.13.2"
 appcompat = "1.6.1"
 material = "1.9.0"
 okhttp = "4.11.0"
@@ -21,16 +21,16 @@ koin = "3.4.3"
 
 [libraries]
 # Project
-android-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "android-junit5" }
-gradle-tools-build = { module = "com.android.tools.build:gradle", version.ref = "build-gradle" }
+android-junit5 = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "androidJunit5" }
+gradle-tools-build = { module = "com.android.tools.build:gradle", version.ref = "buildGradle" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
 # Kotlin
-kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin-bom" }
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlinBom" }
 
 # AndroidX
-androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
-androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 # Compose
@@ -39,20 +39,20 @@ compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 debug-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 debug-compose-tool = { module = "androidx.compose.ui:ui-tooling" }
 
 # Junit
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
-junit-platform-console = { module = "org.junit.platform:junit-platform-console", version.ref = "junit-platform-console" }
+junit-platform-console = { module = "org.junit.platform:junit-platform-console", version.ref = "junitPlatformConsole" }
 
 # Android Test
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
 androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
-androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
-junit = { group = "junit", name = "junit", version.ref = "junit-junit" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
 
 # Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
@@ -83,7 +83,7 @@ android-test = ["androidx-junit", "androidx-espresso-core", "androidx-compose-ui
 test-koin = ["test-koin", "test-koin-junit4", "test-koin-junit5"]
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "build-gradle" }
-android-library = { id = "com.android.library", version.ref = "build-gradle" }
+android-application = { id = "com.android.application", version.ref = "buildGradle" }
+android-library = { id = "com.android.library", version.ref = "buildGradle" }
 jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

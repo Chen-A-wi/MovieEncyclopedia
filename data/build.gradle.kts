@@ -11,4 +11,6 @@ android {
 dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(project(":common"))
+    implementation(project(":network"))
+    testImplementation(project(":testing"))
 }

@@ -18,6 +18,7 @@ class BaseLibPlugin : Plugin<Project> {
                 plugins.run {
                     apply("org.jetbrains.kotlin.android")
                     apply("quality.ktlint")
+                    apply("de.mannodermaus.android-junit5")
                 }
 
                 defaultConfig {
@@ -47,10 +48,23 @@ class BaseLibPlugin : Plugin<Project> {
                     "implementation"(libs.material)
                     "implementation"(libs.koin)
 
+                    //region Test
                     "testImplementation"(libs.junit)
                     "androidTestImplementation"(libs.androidx.junit)
                     "androidTestImplementation"(libs.androidx.espresso.core)
                     "testImplementation"(libs.bundles.test.koin)
+
+                    // (Required) Writing and executing Unit Tests on the JUnit Platform
+                    "testImplementation"(libs.junit.jupiter.api)
+                    "testRuntimeOnly"(libs.junit.jupiter.engine)
+
+                    // (Optional) If you need "Parameterized Tests"
+                    "testImplementation"("org.junit.jupiter:junit-jupiter-params:5.9.3")
+
+                    // (Optional) If you also have JUnit 4-based tests
+                    "testImplementation"(libs.junit)
+                    "testRuntimeOnly"("org.junit.vintage:junit-vintage-engine:5.9.3")
+                    //endregion
                 }
             }
         }

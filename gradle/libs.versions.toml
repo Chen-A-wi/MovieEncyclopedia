@@ -11,6 +11,7 @@ kotlin = "1.9.0"
 kotlinBom = "1.8.22"
 coreKtx = "1.10.1"
 kotlinxSerialization = "1.5.1"
+kotlinxSerizlizationRetrofit2 = "1.0.0"
 lifecycleRuntimeKtx = "2.6.1"
 junitJunit = "4.13.2"
 appcompat = "1.6.1"
@@ -56,6 +57,7 @@ junit = { group = "junit", name = "junit", version.ref = "junitJunit" }
 
 # Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-serialization-retrofit2 = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "kotlinxSerizlizationRetrofit2" }
 
 # UI
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }

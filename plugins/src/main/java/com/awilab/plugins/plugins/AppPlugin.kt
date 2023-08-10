@@ -69,6 +69,9 @@ class AppPlugin : Plugin<Project> {
                     "implementation"(platform(libs.compose.bom))
                     "implementation"(libs.bundles.androidx)
                     "implementation"(platform(libs.kotlin.bom))
+                    "implementation"(libs.koin)
+
+                    "testImplementation"(libs.bundles.test.koin)
                     "testImplementation"(libs.junit.jupiter.api)
                     "testRuntimeOnly"(libs.bundles.test.runtime.only)
                     "androidTestImplementation"(platform(libs.compose.bom))

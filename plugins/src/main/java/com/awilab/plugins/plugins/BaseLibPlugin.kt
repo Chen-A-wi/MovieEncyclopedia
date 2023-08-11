@@ -48,11 +48,15 @@ class BaseLibPlugin : Plugin<Project> {
                     "implementation"(libs.material)
                     "implementation"(libs.koin)
 
+                    "implementation"(libs.coroutines)
+
                     //region Test
                     "testImplementation"(libs.junit)
                     "androidTestImplementation"(libs.androidx.junit)
                     "androidTestImplementation"(libs.androidx.espresso.core)
                     "testImplementation"(libs.bundles.test.koin)
+
+                    "testImplementation"(libs.test.coroutines)
 
                     // (Required) Writing and executing Unit Tests on the JUnit Platform
                     "testImplementation"(libs.junit.jupiter.api)

@@ -10,5 +10,6 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":network"))
-    implementation("com.google.truth:truth:1.1.4")
+    implementation(project(":common"))
+    implementation(libs.truth)
 }

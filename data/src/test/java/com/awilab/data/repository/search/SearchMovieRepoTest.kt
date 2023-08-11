@@ -1,6 +1,7 @@
 package com.awilab.data.repository.search
 
 import com.awilab.testing.di.testModules
+import com.awilab.testing.extension.shouldBe
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
@@ -41,7 +42,10 @@ class SearchMovieRepoTest : KoinTest {
     fun testAPI() = runTest {
         launch {
             val resp = searchMovieRepo.searchMovie("Jack+Reacher")
+
             println(resp.body().toString())
+
+            resp.isSuccessful shouldBe true
         }
     }
 }

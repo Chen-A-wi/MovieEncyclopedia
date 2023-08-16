@@ -36,16 +36,13 @@ class SearchMovieRepoTest : KoinTest {
         stopKoin()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     @DisplayName("API測試")
     fun testAPI() = runTest {
-        launch {
-            val resp = searchMovieRepo.searchMovie("Jack+Reacher")
+        val resp = searchMovieRepo.searchMovie("Jack+Reacher")
 
-            println(resp.body().toString())
+        println(resp.body().toString())
 
-            resp.isSuccessful shouldBe true
-        }
+        resp.isSuccessful shouldBe true
     }
 }

@@ -7,10 +7,11 @@ import com.awilab.network.di.servicesModule
 import com.awilab.testing.utils.TestAssetsReaderImpl
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val assetsReaderModule = module {
-    singleOf(::TestAssetsReaderImpl) { bind<AssetsReader>() }
+    singleOf(::TestAssetsReaderImpl) bind AssetsReader::class
 }
 
 val testModules = listOf(

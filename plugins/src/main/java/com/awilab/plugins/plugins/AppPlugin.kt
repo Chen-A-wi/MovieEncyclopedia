@@ -48,6 +48,10 @@ class AppPlugin : Plugin<Project> {
                     jvmTarget = Version.jdk.toString()
                 }
 
+                testOptions {
+                    unitTests.isIncludeAndroidResources = true
+                }
+
                 buildTypes {
                     getByName("release") {
                         isMinifyEnabled = true

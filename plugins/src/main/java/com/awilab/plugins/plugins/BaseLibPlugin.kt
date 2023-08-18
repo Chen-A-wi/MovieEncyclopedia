@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 package com.awilab.plugins.plugins
 
 import com.android.build.gradle.LibraryExtension
@@ -36,6 +38,10 @@ class BaseLibPlugin : Plugin<Project> {
 
                 kotlinOptions {
                     jvmTarget = Version.jdk.toString()
+                }
+
+                testOptions {
+                    unitTests.isIncludeAndroidResources = true
                 }
 
                 buildTypes()

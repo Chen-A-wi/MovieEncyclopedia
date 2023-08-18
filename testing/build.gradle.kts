@@ -12,4 +12,5 @@ dependencies {
     implementation(project(":network"))
     implementation(project(":common"))
     implementation(libs.truth)
+    implementation(libs.test.mockwebserver)
 }

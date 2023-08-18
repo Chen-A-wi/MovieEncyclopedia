@@ -2,8 +2,7 @@ package com.awilab.data.repository.search
 
 import com.awilab.testing.di.testModules
 import com.awilab.testing.extension.shouldBe
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.launch
+import com.awilab.testing.extension.startServer
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.AfterEach
@@ -26,7 +25,7 @@ class SearchMovieRepoTest : KoinTest {
         startKoin {
             modules(testModules)
         }
-        mockWebServer.start()
+        mockWebServer.startServer()
         searchMovieRepo = SearchMovieRepo(get())
     }
 
@@ -36,16 +35,16 @@ class SearchMovieRepoTest : KoinTest {
         stopKoin()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    @DisplayName("API測試")
+    @DisplayName("API-mock searchMovie")
     fun testAPI() = runTest {
-        launch {
-            val resp = searchMovieRepo.searchMovie("Jack+Reacher")
+        val resp = searchMovieRepo.searchMovie("123")
 
-            println(resp.body().toString())
-
-            resp.isSuccessful shouldBe true
+        resp.isSuccessful shouldBe true
+        resp.body()?.apply {
+            page shouldBe 1
+            totalPages shouldBe 1
+            totalResults shouldBe 3
         }
     }
 }

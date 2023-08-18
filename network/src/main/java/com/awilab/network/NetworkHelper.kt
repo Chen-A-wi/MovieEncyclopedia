@@ -30,8 +30,14 @@ fun buildRetrofit(
     baseUrl: String,
     okHttpClient: OkHttpClient,
 ): Retrofit {
+    val url = if (CommonConfig.isMock) {
+        CommonConfig.MOCK_API_URL
+    } else {
+        baseUrl
+    }
+
     return Retrofit.Builder()
-        .baseUrl(baseUrl)
+        .baseUrl(url)
         .client(okHttpClient)
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .build()

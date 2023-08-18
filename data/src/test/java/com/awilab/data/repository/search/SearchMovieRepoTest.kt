@@ -2,8 +2,6 @@ package com.awilab.data.repository.search
 
 import com.awilab.testing.di.testModules
 import com.awilab.testing.extension.shouldBe
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.AfterEach

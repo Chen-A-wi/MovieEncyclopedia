@@ -38,7 +38,7 @@ class SearchMovieRepoTest : KoinTest {
     @Test
     @DisplayName("API-mock searchMovie")
     fun testAPI() = runTest {
-        val resp = searchMovieRepo.searchMovie("123")
+        val resp = searchMovieRepo.searchMovie("Jack")
 
         resp.isSuccessful shouldBe true
         resp.body()?.apply {

@@ -1,5 +1,6 @@
 package com.awilab.data.repository.search
 
+import com.awilab.common.QueryType.MOVIE
 import com.awilab.testing.di.testModules
 import com.awilab.testing.extension.shouldBe
 import com.awilab.testing.extension.startServer
@@ -16,9 +17,9 @@ import org.koin.test.get
 import org.koin.test.inject
 import kotlin.properties.Delegates
 
-class SearchMovieRepoTest : KoinTest {
+class SearchTMDBRepoTest : KoinTest {
     private val mockWebServer: MockWebServer by inject()
-    private var searchMovieRepo by Delegates.notNull<SearchMovieRepo>()
+    private var searchTMDBRepo by Delegates.notNull<SearchTMDBRepo>()
 
     @BeforeEach
     fun setup() {
@@ -26,7 +27,7 @@ class SearchMovieRepoTest : KoinTest {
             modules(testModules)
         }
         mockWebServer.startServer()
-        searchMovieRepo = SearchMovieRepo(get())
+        searchTMDBRepo = SearchTMDBRepo(get())
     }
 
     @AfterEach
@@ -37,8 +38,8 @@ class SearchMovieRepoTest : KoinTest {
 
     @Test
     @DisplayName("API-mock searchMovie")
-    fun testAPI() = runTest {
-        val resp = searchMovieRepo.searchMovie("Jack")
+    fun testSearchMovieAPI() = runTest {
+        val resp = searchTMDBRepo.searchTMDB(MOVIE, "Jack")
 
         resp.isSuccessful shouldBe true
         resp.body()?.apply {

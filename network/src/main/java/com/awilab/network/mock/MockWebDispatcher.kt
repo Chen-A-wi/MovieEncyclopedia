@@ -22,6 +22,12 @@ class MockWebDispatcher(private val assetsReader: AssetsReader) : Dispatcher() {
             requestPath.contains("search/movie") && request.method.orEmpty() == "GET" -> {
                 mockResp(assetsPath = "json/search/SearchMovieSuccess.json")
             }
+            requestPath.contains("search/tv") && request.method.orEmpty() == "GET" -> {
+                mockResp(assetsPath = "json/search/SearchTvSuccess.json")
+            }
+            requestPath.contains("tv") && request.method.orEmpty() == "GET" -> {
+                mockResp(assetsPath = "json/query/QueryTvDetailsSuccess.json")
+            }
 
             else -> MockResponse()
         }

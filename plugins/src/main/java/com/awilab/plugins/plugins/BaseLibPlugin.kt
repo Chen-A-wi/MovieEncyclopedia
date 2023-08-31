@@ -10,8 +10,10 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.exclude
+import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.the
+import org.jetbrains.kotlin.konan.properties.Properties
+import kotlin.properties.Delegates
 
 class BaseLibPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -22,6 +24,7 @@ class BaseLibPlugin : Plugin<Project> {
                     apply("quality.ktlint")
                     apply("de.mannodermaus.android-junit5")
                 }
+                flavorDimensions += listOf("default")
 
                 defaultConfig {
                     compileSdk = Version.compileSdk
@@ -37,7 +40,7 @@ class BaseLibPlugin : Plugin<Project> {
                 }
 
                 kotlinOptions {
-                    jvmTarget = Version.jdk.toString()
+                    jvmTarget = "${Version.jdk}"
                 }
 
                 testOptions {
@@ -45,6 +48,32 @@ class BaseLibPlugin : Plugin<Project> {
                 }
 
                 buildTypes()
+
+                buildFeatures {
+                    buildConfig = true
+                }
+
+                productFlavors {
+                    var apiKey by Delegates.notNull<String>()
+                    var apiToken by Delegates.notNull<String>()
+
+                    Properties().apply {
+                        load(project.rootProject.file("local.properties").inputStream())
+                        apiKey = getProperty("API_KEY")
+                        apiToken = getProperty("API_TOKEN")
+                    }
+
+                    create("dev") {
+                        resValue("string", "app_name", "(DEV)MovieEncyclopedia")
+                        buildConfigField("String", "API_KEY", apiKey)
+                        buildConfigField("String", "API_TOKEN", apiToken)
+                    }
+                    create("prod") {
+                        resValue("string", "app_name", "MovieEncyclopedia")
+                        buildConfigField("String", "API_KEY", apiKey)
+                        buildConfigField("String", "API_TOKEN", apiToken)
+                    }
+                }
 
                 val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
 

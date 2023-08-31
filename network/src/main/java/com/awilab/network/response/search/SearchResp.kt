@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SearchMovieResp(
+data class SearchResp(
     val page: Int? = 0,
     val results: List<Result?>? = listOf(),
     @SerialName("total_pages")

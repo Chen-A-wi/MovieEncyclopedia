@@ -1,5 +1,6 @@
-package com.awilab.data.repository.search
+package com.awilab.data.repository.query
 
+import com.awilab.common.QueryType.TV
 import com.awilab.testing.di.testModules
 import com.awilab.testing.extension.shouldBe
 import com.awilab.testing.extension.startServer
@@ -16,9 +17,9 @@ import org.koin.test.get
 import org.koin.test.inject
 import kotlin.properties.Delegates
 
-class SearchMovieRepoTest : KoinTest {
+class QueryDetailsRepoTest : KoinTest {
     private val mockWebServer: MockWebServer by inject()
-    private var searchMovieRepo by Delegates.notNull<SearchMovieRepo>()
+    private var queryDetailsRepo by Delegates.notNull<QueryDetailsRepo>()
 
     @BeforeEach
     fun setup() {
@@ -26,7 +27,7 @@ class SearchMovieRepoTest : KoinTest {
             modules(testModules)
         }
         mockWebServer.startServer()
-        searchMovieRepo = SearchMovieRepo(get())
+        queryDetailsRepo = QueryDetailsRepo(get())
     }
 
     @AfterEach
@@ -36,15 +37,17 @@ class SearchMovieRepoTest : KoinTest {
     }
 
     @Test
-    @DisplayName("API-mock searchMovie")
-    fun testAPI() = runTest {
-        val resp = searchMovieRepo.searchMovie("123")
-
-        resp.isSuccessful shouldBe true
-        resp.body()?.apply {
-            page shouldBe 1
-            totalPages shouldBe 1
-            totalResults shouldBe 3
+    @DisplayName("API-mock QueryDetails")
+    fun testQueryDetailsAPI() = runTest {
+        queryDetailsRepo.queryDetails(
+            queryType = TV,
+            id = 8964.toString(),
+        ).also { response ->
+            response.isSuccessful shouldBe true
+            response.body()?.apply {
+                id shouldBe 95479
+                name shouldBe "Jujutsu Kaisen"
+            }
         }
     }
 }

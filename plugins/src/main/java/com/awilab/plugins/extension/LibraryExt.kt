@@ -9,5 +9,9 @@ fun LibraryExtension.buildTypes() {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
             consumerProguardFiles("proguard-rules.pro")
         }
+
+        getByName("debug") {
+
+        }
     }
 }

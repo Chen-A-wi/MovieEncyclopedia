@@ -45,18 +45,11 @@ class AppPlugin : Plugin<Project> {
                 }
 
                 kotlinOptions {
-                    jvmTarget = Version.jdk.toString()
+                    jvmTarget = "${Version.jdk}"
                 }
 
                 testOptions {
                     unitTests.isIncludeAndroidResources = true
-                }
-
-                buildTypes {
-                    getByName("release") {
-                        isMinifyEnabled = true
-                        proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-                    }
                 }
 
                 packaging {

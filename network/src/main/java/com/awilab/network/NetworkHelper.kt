@@ -26,6 +26,10 @@ inline fun <reified T> createService(
     return buildRetrofit(baseUrl, okHttpClient).create(T::class.java)
 }
 
+private val json = Json {
+    ignoreUnknownKeys = true
+}
+
 fun buildRetrofit(
     baseUrl: String,
     okHttpClient: OkHttpClient,
@@ -35,11 +39,18 @@ fun buildRetrofit(
     } else {
         baseUrl
     }
+    val jsonBuilder = Json {
+        ignoreUnknownKeys = true // skip unknown json key
+        coerceInputValues = true // null default
+        prettyPrint = true // format
+    }
 
     return Retrofit.Builder()
         .baseUrl(url)
         .client(okHttpClient)
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        .addConverterFactory(
+            jsonBuilder.asConverterFactory("application/json".toMediaType()),
+        )
         .build()
 }
 

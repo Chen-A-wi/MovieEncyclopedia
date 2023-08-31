@@ -37,7 +37,7 @@ class SearchTMDBRepoTest : KoinTest {
     }
 
     @Test
-    @DisplayName("API-mock searchMovie")
+    @DisplayName("API-mock SearchMovie")
     fun testSearchMovieAPI() = runTest {
         val resp = searchTMDBRepo.searchTMDB(MOVIE, "Jack")
 

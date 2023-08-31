@@ -1,6 +1,8 @@
 package com.awilab.data.repository.query
 
+import com.awilab.common.QueryType.TV
 import com.awilab.testing.di.testModules
+import com.awilab.testing.extension.shouldBe
 import com.awilab.testing.extension.startServer
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockWebServer
@@ -35,7 +37,17 @@ class QueryDetailsRepoTest : KoinTest {
     }
 
     @Test
-    @DisplayName("API-mock queryDetails")
+    @DisplayName("API-mock QueryDetails")
     fun testQueryDetailsAPI() = runTest {
+        queryDetailsRepo.queryDetails(
+            queryType = TV,
+            id = 8964.toString(),
+        ).also { response ->
+            response.isSuccessful shouldBe true
+            response.body()?.apply {
+                id shouldBe 95479
+                name shouldBe "Jujutsu Kaisen"
+            }
+        }
     }
 }

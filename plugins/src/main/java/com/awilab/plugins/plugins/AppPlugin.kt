@@ -68,6 +68,11 @@ class AppPlugin : Plugin<Project> {
                     "implementation"(platform(libs.kotlin.bom))
                     "implementation"(libs.koin)
 
+                    //region Flipper
+                    "debugImplementation"(libs.bundles.debug.flipper)
+                    "releaseImplementation"(libs.flipper.noop)
+                    //endregion
+
                     "testImplementation"(libs.bundles.test.koin)
                     "testImplementation"(libs.junit.jupiter.api)
                     "testRuntimeOnly"(libs.bundles.test.runtime.only)

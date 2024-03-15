@@ -54,6 +54,17 @@ class AppPlugin : Plugin<Project> {
                     unitTests.isIncludeAndroidResources = true
                 }
 
+                buildTypes {
+                    release {
+                        isMinifyEnabled = true
+                        proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+                    }
+
+                    debug {
+
+                    }
+                }
+
                 packaging {
                     resources.excludes.apply {
                         add("META-INF/AL2.0")

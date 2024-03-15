@@ -14,16 +14,6 @@ android {
         applicationId = "com.awilab.movieencyclopedia"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-        }
-
-        debug {
-        }
-    }
-
     buildFeatures {
         buildConfig = true
     }

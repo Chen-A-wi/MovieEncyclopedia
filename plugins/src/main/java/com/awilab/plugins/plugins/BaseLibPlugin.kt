@@ -4,7 +4,6 @@ package com.awilab.plugins.plugins
 
 import com.android.build.gradle.LibraryExtension
 import com.awilab.plugins.configs.Version
-import com.awilab.plugins.extension.buildTypes
 import com.awilab.plugins.extension.kotlinOptions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -47,7 +46,16 @@ class BaseLibPlugin : Plugin<Project> {
                     unitTests.isIncludeAndroidResources = true
                 }
 
-                buildTypes()
+                buildTypes {
+                    release {
+                        isMinifyEnabled = true
+                        proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
+                    }
+
+                    debug {
+
+                    }
+                }
 
                 buildFeatures {
                     buildConfig = true

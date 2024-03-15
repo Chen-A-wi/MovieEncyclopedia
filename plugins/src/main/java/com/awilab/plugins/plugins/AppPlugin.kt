@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 package com.awilab.plugins.plugins
 
 import com.android.build.api.dsl.ApplicationExtension

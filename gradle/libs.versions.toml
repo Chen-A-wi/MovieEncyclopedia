@@ -19,7 +19,7 @@ material = "1.9.0"
 okhttp = "4.11.0"
 retrofit2 = "2.9.0"
 koin = "3.4.3"
-coroutines = "1.7.1"
+coroutines = "1.7.3"
 truth = "1.1.4"
 
 [libraries]
@@ -79,6 +79,8 @@ test-koin-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "
 # Coroutines
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+
+# Test
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
 [bundles]

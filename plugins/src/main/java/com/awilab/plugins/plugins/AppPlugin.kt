@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 package com.awilab.plugins.plugins
 
 import com.android.build.api.dsl.ApplicationExtension
@@ -67,11 +69,6 @@ class AppPlugin : Plugin<Project> {
                     "implementation"(libs.bundles.androidx)
                     "implementation"(platform(libs.kotlin.bom))
                     "implementation"(libs.koin)
-
-                    //region Flipper
-                    "debugImplementation"(libs.bundles.debug.flipper)
-                    "releaseImplementation"(libs.flipper.noop)
-                    //endregion
 
                     "testImplementation"(libs.bundles.test.koin)
                     "testImplementation"(libs.junit.jupiter.api)

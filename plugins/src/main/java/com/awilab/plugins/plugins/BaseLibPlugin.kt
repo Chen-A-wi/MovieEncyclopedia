@@ -85,11 +85,6 @@ class BaseLibPlugin : Plugin<Project> {
 
                     "implementation"(libs.coroutines)
 
-                    //region Flipper
-                    "debugImplementation"(libs.bundles.debug.flipper)
-                    "releaseImplementation"(libs.flipper.noop)
-                    //endregion
-
                     //region Test
                     "testImplementation"(libs.junit)
                     "androidTestImplementation"(libs.androidx.junit)

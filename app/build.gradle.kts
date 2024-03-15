@@ -44,4 +44,5 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":network"))
+    implementation(libs.androidx.navigation)
 }

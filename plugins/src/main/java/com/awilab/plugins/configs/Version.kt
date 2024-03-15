@@ -3,7 +3,7 @@ package com.awilab.plugins.configs
 import org.gradle.api.JavaVersion
 
 object Version {
-    const val compileSdk = 33
+    const val compileSdk = 34
     const val minSdk = 24
     const val targetSdk = 33
     const val versionCode = 1

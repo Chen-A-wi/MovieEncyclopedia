@@ -17,12 +17,13 @@ import kotlin.properties.Delegates
 class BaseLibPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            with(pluginManager) {
+                apply("org.jetbrains.kotlin.android")
+                apply("quality.ktlint")
+                apply("de.mannodermaus.android-junit5")
+            }
+
             extensions.configure<LibraryExtension> {
-                plugins.run {
-                    apply("org.jetbrains.kotlin.android")
-                    apply("quality.ktlint")
-                    apply("de.mannodermaus.android-junit5")
-                }
                 flavorDimensions += listOf("default")
 
                 defaultConfig {
@@ -82,37 +83,36 @@ class BaseLibPlugin : Plugin<Project> {
                         buildConfigField("String", "API_TOKEN", apiToken)
                     }
                 }
+            }
 
-                val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
+            val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
+            dependencies {
+                "implementation"(libs.bundles.androidx)
+                "implementation"(libs.androidx.appcompat)
+                "implementation"(libs.material)
+                "implementation"(libs.koin)
 
-                dependencies {
-                    "implementation"(libs.bundles.androidx)
-                    "implementation"(libs.androidx.appcompat)
-                    "implementation"(libs.material)
-                    "implementation"(libs.koin)
+                "implementation"(libs.coroutines)
 
-                    "implementation"(libs.coroutines)
+                //region Test
+                "testImplementation"(libs.junit)
+                "androidTestImplementation"(libs.androidx.junit)
+                "androidTestImplementation"(libs.androidx.espresso.core)
+                "testImplementation"(libs.bundles.test.koin)
 
-                    //region Test
-                    "testImplementation"(libs.junit)
-                    "androidTestImplementation"(libs.androidx.junit)
-                    "androidTestImplementation"(libs.androidx.espresso.core)
-                    "testImplementation"(libs.bundles.test.koin)
+                "testImplementation"(libs.test.coroutines)
 
-                    "testImplementation"(libs.test.coroutines)
+                // (Required) Writing and executing Unit Tests on the JUnit Platform
+                "testImplementation"(libs.junit.jupiter.api)
+                "testRuntimeOnly"(libs.junit.jupiter.engine)
 
-                    // (Required) Writing and executing Unit Tests on the JUnit Platform
-                    "testImplementation"(libs.junit.jupiter.api)
-                    "testRuntimeOnly"(libs.junit.jupiter.engine)
+                // (Optional) If you need "Parameterized Tests"
+                "testImplementation"("org.junit.jupiter:junit-jupiter-params:5.9.3")
 
-                    // (Optional) If you need "Parameterized Tests"
-                    "testImplementation"("org.junit.jupiter:junit-jupiter-params:5.9.3")
-
-                    // (Optional) If you also have JUnit 4-based tests
-                    "testImplementation"(libs.junit)
-                    "testRuntimeOnly"("org.junit.vintage:junit-vintage-engine:5.9.3")
-                    //endregion
-                }
+                // (Optional) If you also have JUnit 4-based tests
+                "testImplementation"(libs.junit)
+                "testRuntimeOnly"("org.junit.vintage:junit-vintage-engine:5.9.3")
+                //endregion
             }
         }
     }

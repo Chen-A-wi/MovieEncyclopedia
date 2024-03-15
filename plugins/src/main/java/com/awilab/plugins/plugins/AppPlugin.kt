@@ -14,12 +14,12 @@ import org.gradle.kotlin.dsl.the
 class AppPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            extensions.configure<ApplicationExtension> {
-                plugins.run {
-                    apply("org.jetbrains.kotlin.android")
-                    apply("quality.ktlint")
-                }
+            with(pluginManager) {
+                apply("org.jetbrains.kotlin.android")
+                apply("quality.ktlint")
+            }
 
+            extensions.configure<ApplicationExtension> {
                 defaultConfig {
                     compileSdk = Version.compileSdk
                     minSdk = Version.minSdk
@@ -71,23 +71,22 @@ class AppPlugin : Plugin<Project> {
                         add("META-INF/LGPL2.1")
                     }
                 }
+            }
 
-                val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
+            val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
+            dependencies {
+                "implementation"(libs.bundles.compose)
+                "implementation"(platform(libs.compose.bom))
+                "implementation"(libs.bundles.androidx)
+                "implementation"(platform(libs.kotlin.bom))
+                "implementation"(libs.koin)
 
-                dependencies {
-                    "implementation"(libs.bundles.compose)
-                    "implementation"(platform(libs.compose.bom))
-                    "implementation"(libs.bundles.androidx)
-                    "implementation"(platform(libs.kotlin.bom))
-                    "implementation"(libs.koin)
-
-                    "testImplementation"(libs.bundles.test.koin)
-                    "testImplementation"(libs.junit.jupiter.api)
-                    "testRuntimeOnly"(libs.bundles.test.runtime.only)
-                    "androidTestImplementation"(platform(libs.compose.bom))
-                    "androidTestImplementation"(libs.bundles.android.test)
-                    "debugImplementation"(libs.bundles.debug)
-                }
+                "testImplementation"(libs.bundles.test.koin)
+                "testImplementation"(libs.junit.jupiter.api)
+                "testRuntimeOnly"(libs.bundles.test.runtime.only)
+                "androidTestImplementation"(platform(libs.compose.bom))
+                "androidTestImplementation"(libs.bundles.android.test)
+                "debugImplementation"(libs.bundles.debug)
             }
         }
     }

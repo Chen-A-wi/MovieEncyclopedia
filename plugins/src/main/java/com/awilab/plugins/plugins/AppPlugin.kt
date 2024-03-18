@@ -4,7 +4,7 @@ package com.awilab.plugins.plugins
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.awilab.plugins.configs.Version
-import com.awilab.plugins.extension.kotlinOptions
+import com.awilab.plugins.extension.configureAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -21,37 +21,23 @@ class AppPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 defaultConfig {
-                    compileSdk = Version.compileSdk
-                    minSdk = Version.minSdk
                     targetSdk = Version.targetSdk
                     versionCode = Version.versionCode
                     versionName = Version.versionName
 
-                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     vectorDrawables {
                         useSupportLibrary = true
                     }
                 }
 
+                configureAndroid()
+
                 buildFeatures {
                     compose = true
                 }
 
-                compileOptions {
-                    sourceCompatibility = Version.jdk
-                    targetCompatibility = Version.jdk
-                }
-
                 composeOptions {
                     kotlinCompilerExtensionVersion = Version.kotlinCompilerExtension
-                }
-
-                kotlinOptions {
-                    jvmTarget = "${Version.jdk}"
-                }
-
-                testOptions {
-                    unitTests.isIncludeAndroidResources = true
                 }
 
                 buildTypes {

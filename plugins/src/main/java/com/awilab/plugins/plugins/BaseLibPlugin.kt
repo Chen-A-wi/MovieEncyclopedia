@@ -3,8 +3,7 @@
 package com.awilab.plugins.plugins
 
 import com.android.build.gradle.LibraryExtension
-import com.awilab.plugins.configs.Version
-import com.awilab.plugins.extension.kotlinOptions
+import com.awilab.plugins.extension.configureAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -26,26 +25,7 @@ class BaseLibPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 flavorDimensions += listOf("default")
 
-                defaultConfig {
-                    compileSdk = Version.compileSdk
-                    minSdk = Version.minSdk
-
-                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-                    consumerProguardFiles("consumer-rules.pro")
-                }
-
-                compileOptions {
-                    sourceCompatibility = Version.jdk
-                    targetCompatibility = Version.jdk
-                }
-
-                kotlinOptions {
-                    jvmTarget = "${Version.jdk}"
-                }
-
-                testOptions {
-                    unitTests.isIncludeAndroidResources = true
-                }
+                configureAndroid()
 
                 buildTypes {
                     release {
@@ -56,10 +36,6 @@ class BaseLibPlugin : Plugin<Project> {
                     debug {
 
                     }
-                }
-
-                buildFeatures {
-                    buildConfig = true
                 }
 
                 productFlavors {

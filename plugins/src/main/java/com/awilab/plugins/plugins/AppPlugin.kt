@@ -32,14 +32,6 @@ class AppPlugin : Plugin<Project> {
 
                 configureAndroid()
 
-                buildFeatures {
-                    compose = true
-                }
-
-                composeOptions {
-                    kotlinCompilerExtensionVersion = Version.kotlinCompilerExtension
-                }
-
                 buildTypes {
                     release {
                         isMinifyEnabled = true
@@ -61,8 +53,6 @@ class AppPlugin : Plugin<Project> {
 
             val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
             dependencies {
-                "implementation"(libs.bundles.compose)
-                "implementation"(platform(libs.compose.bom))
                 "implementation"(libs.bundles.androidx)
                 "implementation"(platform(libs.kotlin.bom))
                 "implementation"(libs.koin)
@@ -70,7 +60,6 @@ class AppPlugin : Plugin<Project> {
                 "testImplementation"(libs.bundles.test.koin)
                 "testImplementation"(libs.junit.jupiter.api)
                 "testRuntimeOnly"(libs.bundles.test.runtime.only)
-                "androidTestImplementation"(platform(libs.compose.bom))
                 "androidTestImplementation"(libs.bundles.android.test)
                 "debugImplementation"(libs.bundles.debug)
             }

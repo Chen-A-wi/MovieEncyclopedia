@@ -4,6 +4,7 @@ import kotlin.properties.Delegates
 plugins {
     id("com.android.application")
     id("plugins.app")
+    id("plugins.compose")
 }
 
 android {
@@ -12,10 +13,6 @@ android {
 
     defaultConfig {
         applicationId = "com.awilab.movieencyclopedia"
-    }
-
-    buildFeatures {
-        buildConfig = true
     }
 
     productFlavors {

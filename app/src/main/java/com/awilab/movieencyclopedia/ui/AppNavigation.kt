@@ -1,7 +1,9 @@
 package com.awilab.movieencyclopedia.ui
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 // Learn more: https://medium.com/@KaushalVasava/navigation-in-jetpack-compose-full-guide-beginner-to-advanced-950c1133740
@@ -16,6 +18,11 @@ sealed class NavigationItem(val route: String) {
 
 @Composable
 fun MainNavigation(
-    navController: NavController = rememberNavController(),
+    navController: NavHostController = rememberNavController(),
 ) {
+    NavHost(navController = navController, startDestination = "list") {
+        composable("list") {
+//            ListRoute
+        }
+    }
 }

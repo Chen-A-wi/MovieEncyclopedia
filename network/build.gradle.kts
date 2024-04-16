@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
-    id("plugins.base-lib")
-    kotlin("plugin.serialization") version "1.9.0"
+    id(libs.plugins.base.library.get().pluginId)
+    kotlin("plugin.serialization") version "1.9.23"
 }
 
 android {

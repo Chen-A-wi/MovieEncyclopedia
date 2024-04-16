@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.awilab.common"
+    namespace = "com.awilab.searchlist"
 }
 
 dependencies {

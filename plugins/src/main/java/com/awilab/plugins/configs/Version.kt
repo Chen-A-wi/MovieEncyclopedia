@@ -8,6 +8,6 @@ object Version {
     const val targetSdk = 33
     const val versionCode = 1
     const val versionName = "1.0"
-    const val kotlinCompilerExtension = "1.5.0"
+    const val kotlinCompilerExtension = "1.5.11"
     val jdk = JavaVersion.VERSION_17
 }

@@ -7,7 +7,7 @@ espressoCore = "3.5.1"
 junit = "1.1.5"
 junitPlatformConsole = "1.9.3"
 junit5 = "5.9.3"
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 kotlinBom = "1.8.22"
 coreKtx = "1.12.0"
 kotlinxSerialization = "1.5.1"
@@ -98,5 +98,6 @@ test-koin = ["test-koin", "test-koin-junit4", "test-koin-junit5"]
 [plugins]
 android-application = { id = "com.android.application", version.ref = "buildGradle" }
 android-library = { id = "com.android.library", version.ref = "buildGradle" }
+base-library = { id = "plugins.base-lib" }
 jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

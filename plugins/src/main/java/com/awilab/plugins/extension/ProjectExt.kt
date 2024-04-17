@@ -10,7 +10,7 @@ import org.gradle.kotlin.dsl.the
 internal fun Project.configureCompose(commonExtension: BaseExtension){
     commonExtension.apply {
         buildFeatures.compose = true
-        composeOptions.kotlinCompilerExtensionVersion = Version.kotlinCompilerExtension
+        composeOptions.kotlinCompilerExtensionVersion = Version.KOTLIN_COMPILER_EXTENSION
 
         val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
         dependencies {

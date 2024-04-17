@@ -21,9 +21,9 @@ class AppPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 defaultConfig {
-                    targetSdk = Version.targetSdk
-                    versionCode = Version.versionCode
-                    versionName = Version.versionName
+                    targetSdk = Version.TARGET_SDK
+                    versionCode = Version.VERSION_CODE
+                    versionName = Version.VERSION_NAME
 
                     vectorDrawables {
                         useSupportLibrary = true

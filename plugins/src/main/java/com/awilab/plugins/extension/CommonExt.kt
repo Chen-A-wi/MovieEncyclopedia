@@ -13,8 +13,8 @@ internal fun CommonExtension<*, *, *, *, *, *>.kotlinOptions(block: KotlinJvmOpt
 internal fun CommonExtension<*, *, *, *, *, *>.configureAndroid() {
     apply {
         defaultConfig {
-            compileSdk = Version.compileSdk
-            minSdk = Version.minSdk
+            compileSdk = Version.COMPILE_SDK
+            minSdk = Version.MIN_SDK
 
             testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         }

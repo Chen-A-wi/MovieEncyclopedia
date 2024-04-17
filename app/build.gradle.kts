@@ -4,6 +4,7 @@ import kotlin.properties.Delegates
 plugins {
     id("com.android.application")
     id("plugins.app")
+    id("plugins.compose")
 }
 
 android {
@@ -12,20 +13,6 @@ android {
 
     defaultConfig {
         applicationId = "com.awilab.movieencyclopedia"
-    }
-
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-        }
-
-        getByName("debug") {
-        }
-    }
-
-    buildFeatures {
-        buildConfig = true
     }
 
     productFlavors {
@@ -54,4 +41,5 @@ android {
 dependencies {
     implementation(project(":data"))
     implementation(project(":network"))
+    implementation(libs.androidx.navigation)
 }

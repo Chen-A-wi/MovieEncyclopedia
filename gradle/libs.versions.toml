@@ -1,26 +1,27 @@
 [versions]
-composeActivity = "1.7.2"
+composeActivity = "1.8.2"
 androidJunit5 = "1.9.3.0"
-composeBom = "2023.06.01"
-buildGradle = "8.1.0"
+composeBom = "2024.04.00"
+buildGradle = "8.3.2"
 espressoCore = "3.5.1"
 junit = "1.1.5"
 junitPlatformConsole = "1.9.3"
 junit5 = "5.9.3"
-kotlin = "1.9.0"
+kotlin = "1.9.23"
 kotlinBom = "1.8.22"
-coreKtx = "1.10.1"
+coreKtx = "1.12.0"
 kotlinxSerialization = "1.5.1"
 kotlinxSerizlizationRetrofit2 = "1.0.0"
-lifecycleRuntimeKtx = "2.6.1"
+lifecycleRuntimeKtx = "2.7.0"
 junitJunit = "4.13.2"
 appcompat = "1.6.1"
-material = "1.9.0"
-okhttp = "4.11.0"
+material = "1.11.0"
+okhttp = "4.12.0"
 retrofit2 = "2.9.0"
+navigation = "2.7.7"
 koin = "3.4.3"
-coroutines = "1.7.1"
-truth = "1.1.4"
+coroutines = "1.7.3"
+truth = "1.1.5"
 
 [libraries]
 # Project
@@ -35,6 +36,7 @@ kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 
 # Compose
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
@@ -79,6 +81,8 @@ test-koin-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "
 # Coroutines
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+
+# Test
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
 [bundles]
@@ -88,11 +92,12 @@ compose = [
 androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
 debug = ["debug-compose-manifest", "debug-compose-tool"]
 test-runtime-only = ["junit-jupiter-engine", "junit-platform-console"]
-android-test = ["androidx-junit", "androidx-espresso-core", "androidx-compose-ui-test"]
+android-test = ["androidx-junit", "androidx-espresso-core"]
 test-koin = ["test-koin", "test-koin-junit4", "test-koin-junit5"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "buildGradle" }
 android-library = { id = "com.android.library", version.ref = "buildGradle" }
+base-library = { id = "plugins.base-lib" }
 jetbrains-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

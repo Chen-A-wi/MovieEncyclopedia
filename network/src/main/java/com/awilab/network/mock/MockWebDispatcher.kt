@@ -13,7 +13,7 @@ class MockWebDispatcher(private val assetsReader: AssetsReader) : Dispatcher() {
         var requestPath by Delegates.notNull<String>()
         var requestUrl by Delegates.notNull<HttpUrl>()
 
-        safeLet(request.method, request.path, request.requestUrl) { method, path, url ->
+        safeLet(request.method, request.path, request.requestUrl) { _, path, url ->
             requestPath = path
             requestUrl = url
         }

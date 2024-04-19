@@ -13,6 +13,7 @@ val viewModule = module {
 
 val appModules = listOf(
     dataModule,
+    viewModule,
     networkModule,
     servicesModule,
 )

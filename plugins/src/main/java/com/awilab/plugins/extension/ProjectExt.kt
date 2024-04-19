@@ -15,6 +15,7 @@ internal fun Project.configureCompose(commonExtension: BaseExtension){
         val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
         dependencies {
             "implementation"(libs.bundles.compose)
+            "implementation"(libs.koin.compose)
             "implementation"(platform(libs.compose.bom))
             "androidTestImplementation"(platform(libs.compose.bom))
             "androidTestImplementation"(libs.androidx.compose.ui.test)

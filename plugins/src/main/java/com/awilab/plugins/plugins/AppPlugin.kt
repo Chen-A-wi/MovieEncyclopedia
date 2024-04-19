@@ -14,6 +14,8 @@ import org.gradle.kotlin.dsl.the
 class AppPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
+
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.android")
                 apply("quality.ktlint")
@@ -51,7 +53,6 @@ class AppPlugin : Plugin<Project> {
                 }
             }
 
-            val libs = the<org.gradle.accessors.dm.LibrariesForLibs>()
             dependencies {
                 "implementation"(libs.bundles.androidx)
                 "implementation"(platform(libs.kotlin.bom))

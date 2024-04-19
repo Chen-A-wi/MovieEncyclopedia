@@ -1,6 +1,5 @@
 package com.awilab.movieencyclopedia.di
 
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.awilab.data.di.dataModule
 import com.awilab.movieencyclopedia.ui.search.SearchViewModel
 import com.awilab.network.di.networkModule

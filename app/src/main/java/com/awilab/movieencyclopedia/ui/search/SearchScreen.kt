@@ -10,11 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.awilab.movieencyclopedia.Greeting
 import com.awilab.movieencyclopedia.ui.theme.MovieEncyclopediaTheme
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
-import org.koin.androidx.compose.koinViewModel
 
 @Destination<RootGraph>
 @Composable
@@ -28,7 +26,7 @@ fun SearchScreen(
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(text = "TestScreen")
         }

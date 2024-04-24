@@ -13,10 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 
-@Composable
-fun AppBar(title: String) {
-    TopAppBar(title = { Text(text = title) })
-}
+fun appBar(title: String): @Composable () -> Unit = { TopAppBar(title = { Text(text = title) }) }
 
 @Composable
 fun AppBarWithBackBtn(title: String, backEvent: () -> Unit) {

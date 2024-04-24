@@ -3,8 +3,6 @@ package com.awilab.movieencyclopedia
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -16,7 +14,6 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -29,16 +26,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import com.awilab.movieencyclopedia.ui.setting.SettingScreen
 import com.awilab.movieencyclopedia.ui.theme.MovieEncyclopediaTheme
+import com.awilab.movieencyclopedia.ui.widgets.appBar
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.NavGraphs
-import com.ramcosta.composedestinations.generated.destinations.SearchScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 class MainActivity : ComponentActivity() {
@@ -93,12 +90,16 @@ fun MainScreen(navigator: DestinationsNavigator) {
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background,
     ) {
-        Scaffold(bottomBar = {
+        Scaffold(
+            topBar = appBar(title = navItems[selectedItem].title),
+            bottomBar = {
             NavigationBar {
                 navItems.forEachIndexed { index, item ->
                     NavigationBarItem(
                         selected = selectedItem == index,
-                        onClick = { selectedItem = index },
+                        onClick = {
+                            selectedItem = index
+                        },
                         label = { Text(text = item.title) },
                         icon = {
                             BadgedBox(
@@ -124,20 +125,21 @@ fun MainScreen(navigator: DestinationsNavigator) {
                 }
             }
         }) { innerPadding ->
-            Column(
-                modifier = Modifier.padding(innerPadding),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Text(
-                    text = "Hello Android!",
-                )
-                Button(onClick = {
-                    navigator.navigate(SearchScreenDestination())
-                }) {
-                    Text(text = "Next Page")
-                }
-            }
+            SettingScreen(paddingModifier = Modifier.padding(innerPadding))
+//            Column(
+//                modifier = Modifier.padding(innerPadding),
+//                verticalArrangement = Arrangement.Center,
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//            ) {
+//                Text(
+//                    text = "Hello Android!",
+//                )
+//                Button(onClick = {
+//                    navigator.navigate(SearchScreenDestination())
+//                }) {
+//                    Text(text = "Next Page")
+//                }
+//            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.awilab.movieencyclopedia.ui.home
+package com.awilab.movieencyclopedia.ui.movie
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun MovieScreen() {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(

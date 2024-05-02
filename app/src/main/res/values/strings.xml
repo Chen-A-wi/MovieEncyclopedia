@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MovieEncyclopedia</string>
+    <string name="nav_movie_title">Movie</string>
+    <string name="nav_stream_title">Stream</string>
+    <string name="nav_search_title">Search</string>
+    <string name="nav_setting_title">Setting</string>
 </resources>

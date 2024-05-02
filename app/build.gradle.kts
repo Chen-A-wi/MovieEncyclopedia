@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.bundles.material)
     implementation(project(":data"))
     implementation(project(":network"))
 

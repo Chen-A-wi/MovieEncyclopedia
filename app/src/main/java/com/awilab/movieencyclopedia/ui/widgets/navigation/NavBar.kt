@@ -10,7 +10,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.ramcosta.composedestinations.generated.NavGraphs
 import com.ramcosta.composedestinations.navigation.navigate
+import com.ramcosta.composedestinations.spec.DestinationSpec
+import com.ramcosta.composedestinations.utils.currentDestinationAsState
+import com.ramcosta.composedestinations.utils.startDestination
 
 internal val navList = listOf(
     NavItem.Movie,
@@ -21,23 +25,21 @@ internal val navList = listOf(
 fun NavBar(
     navController: NavController
 ) {
-    var selectIndex by rememberSaveable {
-        mutableIntStateOf(0)
-    }
+    val currentDestination: DestinationSpec = navController.currentDestinationAsState().value
+        ?: NavGraphs.root.startDestination
 
     NavigationBar {
-        navList.forEachIndexed { index, item ->
+        navList.forEach { item ->
             NavigationBarItem(
-                selected = selectIndex == index,
+                selected = currentDestination == item.direction,
                 onClick = {
-                    selectIndex = index
                     navController.navigate(item.direction) {
                         launchSingleTop = true
                     }
                 },
                 icon = {
                     Icon(
-                        imageVector = if (index == selectIndex) {
+                        imageVector = if (item.direction == currentDestination) {
                             item.selectedIcon
                         } else {
                             item.unselectedIcon

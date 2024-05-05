@@ -31,8 +31,10 @@ fun SteamScreen(navController: NavController) {
         },
         bottomBar = { NavBar(navController = navController) },
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding).clickable {
-        }) {
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+        ) {
             Text(text = "Hello Steam Screen")
         }
     }

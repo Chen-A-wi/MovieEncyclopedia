@@ -37,6 +37,15 @@ android {
             buildConfigField("String", "API_TOKEN", apiToken)
         }
     }
+
+    applicationVariants.all {
+        addJavaSourceFoldersToModel(
+            File(
+                layout.buildDirectory.asFile.get(),
+                "generated/ksp/$name/kotlin"
+            )
+        )
+    }
 }
 
 dependencies {

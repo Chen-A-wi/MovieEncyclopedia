@@ -11,15 +11,20 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.awilab.movieencyclopedia.ui.widgets.navigation.NavBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>(start = true)
 @Composable
-fun MovieScreen(navController: NavController) {
+fun Movie(
+    navController: NavController,
+    vm:MovieViewModel = koinViewModel()
+) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -31,8 +36,10 @@ fun MovieScreen(navController: NavController) {
         },
         bottomBar = { NavBar(navController = navController) },
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding).clickable {
-        }) {
+        Column(modifier = Modifier
+            .padding(innerPadding)
+            .clickable {
+            }) {
             Text(text = "Hello Movie Screen")
         }
     }

@@ -8,7 +8,7 @@ import androidx.compose.material.icons.outlined.Movie
 import androidx.compose.material.icons.outlined.Stream
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.awilab.movieencyclopedia.R
-import com.ramcosta.composedestinations.generated.destinations.MovieScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.MovieDestination
 import com.ramcosta.composedestinations.generated.destinations.SteamScreenDestination
 import com.ramcosta.composedestinations.spec.DirectionDestinationSpec
 
@@ -25,7 +25,7 @@ internal sealed class NavItem(
         title = R.string.nav_movie_title,
         selectedIcon = Icons.Filled.Movie,
         unselectedIcon = Icons.Outlined.Movie,
-        direction = MovieScreenDestination,
+        direction = MovieDestination,
     )
 
     data object Stream : NavItem(

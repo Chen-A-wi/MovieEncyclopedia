@@ -42,8 +42,8 @@ android {
         addJavaSourceFoldersToModel(
             File(
                 layout.buildDirectory.asFile.get(),
-                "generated/ksp/$name/kotlin"
-            )
+                "generated/ksp/$name/kotlin",
+            ),
         )
     }
 }

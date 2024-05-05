@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
             MovieEncyclopediaTheme {
                 DestinationsNavHost(
                     navGraph = NavGraphs.root,
-                    navController = navController
+                    navController = navController,
                 )
             }
         }

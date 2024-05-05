@@ -1,6 +1,5 @@
 package com.awilab.movieencyclopedia.ui.steam
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -33,7 +32,7 @@ fun SteamScreen(navController: NavController) {
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(innerPadding)
+                .padding(innerPadding),
         ) {
             Text(text = "Hello Steam Screen")
         }

@@ -5,8 +5,6 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
@@ -21,9 +19,10 @@ internal val navList = listOf(
     NavItem.Stream,
 )
 
+// TODO: 需要修NavBar的Title沒有顯示
 @Composable
 fun NavBar(
-    navController: NavController
+    navController: NavController,
 ) {
     val currentDestination: DestinationSpec = navController.currentDestinationAsState().value
         ?: NavGraphs.root.startDestination
@@ -44,7 +43,7 @@ fun NavBar(
                         } else {
                             item.unselectedIcon
                         },
-                        contentDescription = stringResource(id = item.title)
+                        contentDescription = stringResource(id = item.title),
                     )
                 },
             )

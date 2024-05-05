@@ -18,7 +18,7 @@ internal sealed class NavItem(
     @StringRes var title: Int,
     var selectedIcon: ImageVector,
     var unselectedIcon: ImageVector,
-    val direction: DirectionDestinationSpec
+    val direction: DirectionDestinationSpec,
 ) {
 
     data object Movie : NavItem(

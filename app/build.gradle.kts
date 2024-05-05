@@ -5,6 +5,7 @@ plugins {
     id("com.android.application")
     id("plugins.app")
     id("plugins.compose")
+    alias(libs.plugins.devtools.ksp)
 }
 
 android {
@@ -36,10 +37,25 @@ android {
             buildConfigField("String", "API_TOKEN", apiToken)
         }
     }
+
+    applicationVariants.all {
+        addJavaSourceFoldersToModel(
+            File(
+                layout.buildDirectory.asFile.get(),
+                "generated/ksp/$name/kotlin",
+            ),
+        )
+    }
 }
 
 dependencies {
+    implementation(libs.bundles.material)
     implementation(project(":data"))
     implementation(project(":network"))
-    implementation(libs.androidx.navigation)
+
+    //region Compose destinations
+    ksp(libs.compose.destinations.ksp)
+    implementation(libs.compose.destinations.core)
+    implementation(libs.compose.destinations.bottom.sheet)
+    //endregion
 }

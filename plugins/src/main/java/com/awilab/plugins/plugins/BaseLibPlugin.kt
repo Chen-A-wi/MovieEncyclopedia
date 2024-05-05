@@ -65,7 +65,6 @@ class BaseLibPlugin : Plugin<Project> {
             dependencies {
                 "implementation"(libs.bundles.androidx)
                 "implementation"(libs.androidx.appcompat)
-                "implementation"(libs.material)
                 "implementation"(libs.koin)
 
                 "implementation"(libs.coroutines)

@@ -20,7 +20,7 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>(start = true)
 @Composable
-fun Movie(
+fun MovieScreen(
     navController: NavController,
     vm: MovieViewModel = koinViewModel(),
 ) {

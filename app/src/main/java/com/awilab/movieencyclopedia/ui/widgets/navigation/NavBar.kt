@@ -17,6 +17,8 @@ import com.ramcosta.composedestinations.utils.startDestination
 internal val navList = listOf(
     NavItem.Movie,
     NavItem.Stream,
+    NavItem.Search,
+    NavItem.Setting,
 )
 
 // TODO: 需要修NavBar的Title沒有顯示

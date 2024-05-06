@@ -1,5 +1,6 @@
-package com.awilab.movieencyclopedia.ui.steam
+package com.awilab.movieencyclopedia.ui.search
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -19,9 +20,9 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>()
 @Composable
-fun SteamScreen(
+fun SearchScreen(
     navController: NavController,
-    vm: SteamViewModel = koinViewModel(),
+    vm: SearchViewModel = koinViewModel(),
 ) {
     Scaffold(
         topBar = {
@@ -29,16 +30,18 @@ fun SteamScreen(
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Green.copy(alpha = 0.3f),
                 ),
-                title = { Text("SteamScreen") },
+                title = { Text("SearchScreen") },
             )
         },
         bottomBar = { NavBar(navController = navController) },
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(innerPadding),
+                .padding(innerPadding)
+                .clickable {
+                },
         ) {
-            Text(text = "Hello Steam Screen")
+            Text(text = "Hello Search Screen")
         }
     }
 }

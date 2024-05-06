@@ -3,6 +3,7 @@ package com.awilab.movieencyclopedia.ui.widgets.navigation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -21,7 +22,6 @@ internal val navList = listOf(
     NavItem.Setting,
 )
 
-// TODO: 需要修NavBar的Title沒有顯示
 @Composable
 fun NavBar(
     navController: NavController,
@@ -47,6 +47,9 @@ fun NavBar(
                         },
                         contentDescription = stringResource(id = item.title),
                     )
+                },
+                label = {
+                    Text(text = stringResource(id = item.title))
                 },
             )
         }

@@ -1,4 +1,4 @@
-package com.awilab.movieencyclopedia
+package com.awilab.movieencyclopedia.ui.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

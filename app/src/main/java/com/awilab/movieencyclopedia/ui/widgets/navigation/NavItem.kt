@@ -26,28 +26,28 @@ internal sealed class NavItem(
 ) {
 
     data object Movie : NavItem(
-        title = R.string.nav_movie_title,
+        title = R.string.lab_movie,
         selectedIcon = Icons.Filled.Movie,
         unselectedIcon = Icons.Outlined.Movie,
         direction = MovieScreenDestination,
     )
 
     data object Stream : NavItem(
-        title = R.string.nav_stream_title,
+        title = R.string.lab_steam,
         selectedIcon = Icons.Filled.Stream,
         unselectedIcon = Icons.Outlined.Stream,
         direction = SteamScreenDestination,
     )
 
     data object Search : NavItem(
-        title = R.string.nav_search_title,
+        title = R.string.lab_search,
         selectedIcon = Icons.Filled.Search,
         unselectedIcon = Icons.Outlined.Search,
         direction = SearchScreenDestination,
     )
 
     data object Setting : NavItem(
-        title = R.string.nav_setting_title,
+        title = R.string.lab_settings,
         selectedIcon = Icons.Filled.Settings,
         unselectedIcon = Icons.Outlined.Settings,
         direction = SettingScreenDestination,

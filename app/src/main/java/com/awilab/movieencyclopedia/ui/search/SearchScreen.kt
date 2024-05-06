@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
-import com.awilab.movieencyclopedia.ui.widgets.navigation.NavBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import org.koin.androidx.compose.koinViewModel
@@ -33,7 +32,6 @@ fun SearchScreen(
                 title = { Text("SearchScreen") },
             )
         },
-        bottomBar = { NavBar(navController = navController) },
     ) { innerPadding ->
         Column(
             modifier = Modifier

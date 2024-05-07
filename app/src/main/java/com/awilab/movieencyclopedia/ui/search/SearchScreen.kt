@@ -1,5 +1,6 @@
 package com.awilab.movieencyclopedia.ui.search
 
+import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -23,8 +24,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -55,6 +54,7 @@ fun SearchScreen(
                     keyword = vm.keywordStateFlow.collectAsState(initial = "").value,
                     onValueChange = vm::onSearch,
                     onClear = vm::onClear,
+                    errorMsg = vm.onWarningMsg(),
                 )
             }
 
@@ -68,9 +68,12 @@ fun SearchField(
     keyword: String,
     onValueChange: (keyword: String) -> Unit,
     onClear: () -> Unit,
+    @StringRes errorMsg: Int,
 ) {
     OutlinedTextField(
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp).fillMaxWidth(),
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .fillMaxWidth(),
         shape = MaterialTheme.shapes.extraLarge,
         value = keyword,
         onValueChange = onValueChange,
@@ -100,7 +103,15 @@ fun SearchField(
                 }
             }
         },
-        supportingText = { Text(text = "Supporting text") },
+        supportingText = {
+            AnimatedVisibility(
+                visible = keyword.isNotBlank(),
+                enter = fadeIn() + scaleIn(),
+                exit = fadeOut() + scaleOut(),
+            ) {
+                Text(text = stringResource(id = errorMsg), color = MaterialTheme.colorScheme.error)
+            }
+        },
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
             unfocusedBorderColor = MaterialTheme.colorScheme.outline,

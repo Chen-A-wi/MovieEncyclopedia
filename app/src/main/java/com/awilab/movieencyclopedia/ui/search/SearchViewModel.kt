@@ -1,10 +1,13 @@
 package com.awilab.movieencyclopedia.ui.search
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.awilab.movieencyclopedia.R
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 @OptIn(FlowPreview::class)
@@ -13,9 +16,11 @@ class SearchViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            keywordStateFlow.debounce(500).collect { word ->
-                println("===========================$word")
-            }
+            keywordStateFlow.debounce(500)
+                .filter { it.isNotBlank() }
+                .collect { word ->
+                    println("===========================$word")
+                }
         }
     }
 
@@ -30,5 +35,10 @@ class SearchViewModel : ViewModel() {
         viewModelScope.launch {
             keywordStateFlow.value = ""
         }
+    }
+
+    @StringRes
+    fun onWarningMsg(): Int {
+        return R.string.lab_search_warning
     }
 }

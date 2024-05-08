@@ -12,15 +12,15 @@ gradlePlugin {
     plugins {
         create("AppPlugin") {
             id = "plugins.app"
-            implementationClass = "com.awilab.plugins.plugins.AppPlugin"
+            implementationClass = "com.awilab.plugins.common.AppPlugin"
         }
         create("BaseLibPlugin") {
             id = "plugins.base-lib"
-            implementationClass = "com.awilab.plugins.plugins.BaseLibPlugin"
+            implementationClass = "com.awilab.plugins.common.BaseLibPlugin"
         }
         create("ComposePlugin") {
             id = "plugins.compose"
-            implementationClass = "com.awilab.plugins.plugins.ComposePlugin"
+            implementationClass = "com.awilab.plugins.common.ComposePlugin"
         }
         create("Ktlint") {
             id = "quality.ktlint"

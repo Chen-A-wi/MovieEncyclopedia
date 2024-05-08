@@ -26,8 +26,10 @@ inline fun <reified T> createService(
     return buildRetrofit(baseUrl, okHttpClient).create(T::class.java)
 }
 
-private val json = Json {
-    ignoreUnknownKeys = true
+private val jsonBuilder = Json {
+    ignoreUnknownKeys = true // skip unknown json key
+    coerceInputValues = true // null default
+    prettyPrint = true // format
 }
 
 fun buildRetrofit(
@@ -38,11 +40,6 @@ fun buildRetrofit(
         CommonConfig.MOCK_API_URL
     } else {
         baseUrl
-    }
-    val jsonBuilder = Json {
-        ignoreUnknownKeys = true // skip unknown json key
-        coerceInputValues = true // null default
-        prettyPrint = true // format
     }
 
     return Retrofit.Builder()

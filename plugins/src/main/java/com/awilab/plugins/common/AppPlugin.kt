@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-package com.awilab.plugins.plugins
+package com.awilab.plugins.common
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.awilab.plugins.configs.Version

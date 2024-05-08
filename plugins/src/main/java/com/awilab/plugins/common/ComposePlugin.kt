@@ -1,4 +1,4 @@
-package com.awilab.plugins.plugins
+package com.awilab.plugins.common
 
 import com.android.build.gradle.BaseExtension
 import com.awilab.plugins.extension.configureCompose

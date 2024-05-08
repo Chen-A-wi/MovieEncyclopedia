@@ -1,5 +1,6 @@
-package com.awilab.movieencyclopedia.ui.steam
+package com.awilab.movieencyclopedia.ui.setting
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,20 +18,22 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>()
 @Composable
-fun SteamScreen(
+fun SettingScreen(
     navController: NavController,
-    vm: SteamViewModel = koinViewModel(),
+    vm: SettingViewModel = koinViewModel(),
 ) {
     Scaffold(
         topBar = {
-            Appbar(titleRes = R.string.lab_steam)
+            Appbar(titleRes = R.string.lab_settings)
         },
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .padding(innerPadding),
+                .padding(innerPadding)
+                .clickable {
+                },
         ) {
-            Text(text = "Hello Steam Screen")
+            Text(text = "Hello Setting Screen")
         }
     }
 }

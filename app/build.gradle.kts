@@ -50,6 +50,8 @@ android {
 
 dependencies {
     implementation(libs.bundles.material)
+    implementation(libs.retrofit2)
+    implementation(project(":common"))
     implementation(project(":data"))
     implementation(project(":network"))
 

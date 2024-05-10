@@ -34,7 +34,6 @@ class SearchViewModel(
     fun onSearch(keyword: String) {
         viewModelScope.launch {
             keywordStateFlow.value = keyword
-            // TODO: Change stateFlow paging data flow, @see SearchMoviesViewModel & SearchMoviesPager.
         }
     }
 

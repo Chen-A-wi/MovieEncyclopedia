@@ -15,6 +15,8 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import org.koin.androidx.compose.koinViewModel
 
+// TODO: Tag區塊 可參考：https://developer.android.com/develop/ui/compose/layouts/flow?hl=zh-tw
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>(start = true)
 @Composable

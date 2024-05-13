@@ -41,11 +41,13 @@ class SearchTMDBRepoTest : KoinTest {
     fun testSearchMovieAPI() = runTest {
         val resp = searchTMDBRepo.searchTMDB(MOVIE, "Jack")
 
-        resp.isSuccessful shouldBe true
-        resp.body()?.apply {
-            page shouldBe 1
-            totalPages shouldBe 1
-            totalResults shouldBe 3
+        resp.collect {
+            it.isSuccessful shouldBe true
+            it.body()?.apply {
+                page shouldBe 1
+                totalPages shouldBe 1
+                totalResults shouldBe 3
+            }
         }
     }
 }

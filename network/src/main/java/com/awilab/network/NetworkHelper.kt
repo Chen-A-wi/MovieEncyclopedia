@@ -9,6 +9,7 @@ import okhttp3.ConnectionPool
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Protocol
+import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockWebServer
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
@@ -57,13 +58,19 @@ fun createMockWebServer(dispatcher: MockWebDispatcher): MockWebServer {
     return mockWebServer
 }
 
-fun buildOkHttpClient(): OkHttpClient {
+fun buildOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
     return OkHttpClient.Builder()
         .retryOnConnectionFailure(true)
-//        .addNetworkInterceptor(LoggerInterceptor())
+        .addNetworkInterceptor(loggingInterceptor)
         .connectTimeout(60L, TimeUnit.SECONDS)
         .readTimeout(60L, TimeUnit.SECONDS)
         .connectionPool(ConnectionPool(0, 1, TimeUnit.NANOSECONDS))
         .protocols(listOf(Protocol.HTTP_1_1))
         .build()
+}
+
+fun createLogInterceptor(): HttpLoggingInterceptor {
+    return HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
 }

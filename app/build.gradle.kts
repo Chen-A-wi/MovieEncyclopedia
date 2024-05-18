@@ -60,4 +60,7 @@ dependencies {
     implementation(libs.compose.destinations.core)
     implementation(libs.compose.destinations.bottom.sheet)
     //endregion
+
+    implementation(libs.bundles.paging)
+    testImplementation(libs.test.paging.common)
 }

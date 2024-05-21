@@ -3,9 +3,10 @@ package com.awilab.movieencyclopedia.ui.search
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.awilab.common.QueryType
-import com.awilab.data.repository.search.SearchTMDBRepo
+import com.awilab.domain.repository.SearchRepository
 import com.awilab.movieencyclopedia.R
+import com.awilab.network.response.common.Result
+import com.awilab.network.response.common.asResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
 class SearchViewModel(
-    private val searchTMDBRepo: SearchTMDBRepo,
+    private val searchRepository: SearchRepository,
 ) : ViewModel() {
     val keywordStateFlow = MutableStateFlow("")
 
@@ -37,13 +38,20 @@ class SearchViewModel(
         }
     }
 
-    fun searchMovieAndTV(word: String) {
+    fun searchMovieAndTV(query: String) {
         viewModelScope.launch {
-            println("==========================$word")
-            searchTMDBRepo.searchTMDB(searchType = QueryType.MOVIE, keyword = word)
-                .flowOn(Dispatchers.IO)
-                .collect {
-                    println("==========================$it")
+            searchRepository.searchMovies(query = query, page = 1, language = "en").asResult()
+                .flowOn(Dispatchers.IO).collect {
+                    when (it) {
+                        is Result.Error -> {
+                            println("${it.exception.message}")
+                        }
+                        Result.Loading -> {
+                        }
+                        is Result.Success -> {
+                            println("=====================${it.data.results.first()}")
+                        }
+                    }
                 }
         }
     }

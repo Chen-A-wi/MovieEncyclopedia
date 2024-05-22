@@ -2,7 +2,7 @@
 composeActivity = "1.9.0"
 androidJunit5 = "1.9.3.0"
 composeBom = "2024.05.00"
-buildGradle = "8.4.0"
+buildGradle = "8.4.1"
 espressoCore = "3.5.1"
 ksp = "1.9.23-1.0.20"
 composeDestinations = "2.1.0-beta01"
@@ -12,18 +12,21 @@ junit5 = "5.9.3"
 junitPlatformConsole = "1.9.3"
 
 kotlin = "1.9.23"
-kotlinBom = "1.8.22"
+kotlinBom = "1.9.0"
 coreKtx = "1.13.1"
 kotlinxSerialization = "1.5.1"
 kotlinxSerizlizationRetrofit2 = "1.0.0"
-lifecycleRuntimeKtx = "2.7.0"
+lifecycleRuntimeKtx = "2.8.0"
 junitJunit = "4.13.2"
 appcompat = "1.6.1"
-material = "1.11.0"
+
+material = "1.12.0"
 materialIcon = "1.6.7"
+paging = "3.3.0"
+
 okhttp = "4.12.0"
 retrofit2 = "2.11.0"
-koin = "3.5.5"
+koin = "3.5.6"
 koinCompose = "3.5.5"
 coroutines = "1.8.0"
 truth = "1.4.2"
@@ -71,6 +74,11 @@ kotlinx-serialization-retrofit2 = { module = "com.jakewharton.retrofit:retrofit2
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 material-icon = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIcon" }
 
+# Paging
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
+test-paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
+
 # Network
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
@@ -106,6 +114,7 @@ test-runtime-only = ["junit-jupiter-engine", "junit-platform-console"]
 android-test = ["androidx-junit", "androidx-espresso-core"]
 test-koin = ["test-koin", "test-koin-junit4", "test-koin-junit5"]
 material = ["material", "material-icon"]
+paging = ["paging-compose","paging-runtime"]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "buildGradle" }

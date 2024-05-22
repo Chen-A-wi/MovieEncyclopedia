@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.retrofit2)
     implementation(project(":common"))
     implementation(project(":data"))
+    implementation(project(":domain"))
     implementation(project(":network"))
 
     //region Compose destinations
@@ -60,4 +61,7 @@ dependencies {
     implementation(libs.compose.destinations.core)
     implementation(libs.compose.destinations.bottom.sheet)
     //endregion
+
+    implementation(libs.bundles.paging)
+    testImplementation(libs.test.paging.common)
 }

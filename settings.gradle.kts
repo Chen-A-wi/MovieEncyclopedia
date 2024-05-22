@@ -23,6 +23,7 @@ dependencyResolutionManagement {
 rootProject.name = "MovieEncyclopedia"
 include(":app")
 include(":data")
+include(":domain")
 include(":network")
 include(":testing")
 include(":common")

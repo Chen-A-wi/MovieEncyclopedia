@@ -12,10 +12,13 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 
+// TODO See [https://juejin.cn/post/7098390670150205477]
+
 class SearchPagingSource(
     private val query: String,
     private val searchRepository: SearchRepository,
 ) : PagingSource<Int, Movie>() {
+    // 取最後的頁面 key 來 refresh
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         return state.anchorPosition?.let { position ->
             state.closestPageToPosition(anchorPosition = position)?.run {
@@ -24,6 +27,7 @@ class SearchPagingSource(
         }
     }
 
+    // 取 list 資料，prevKey 前一頁，nextKey 下一頁，key 為當前頁數
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return if (query.isEmpty()) {
             LoadResult.Page(data = emptyList(), prevKey = null, nextKey = null)

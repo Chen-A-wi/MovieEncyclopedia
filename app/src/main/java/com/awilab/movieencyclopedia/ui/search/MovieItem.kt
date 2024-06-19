@@ -11,20 +11,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
+import com.awilab.domain.model.movie.Movie
 import com.awilab.movieencyclopedia.R
 import com.awilab.movieencyclopedia.ui.theme.MovieEncyclopediaTheme
 
 @Composable
-fun MovieItem(modifier: Modifier) {
+fun MovieItem(modifier: Modifier = Modifier, movieData: Movie) {
     ConstraintLayout {
         val (imgId, titleId) = createRefs()
 
         SubcomposeAsyncImage(
-            contentScale = ContentScale.FillHeight,
+            contentScale = ContentScale.Fit,
             model = ImageRequest.Builder(LocalContext.current)
                 .crossfade(true)
                 .data("https://image.tmdb.org/t/p/original/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg")
-                .size(720, 360).build(),
+                .size(360, 720)
+                .build(),
             contentDescription = stringResource(id = R.string.lab_search),
             modifier = modifier.constrainAs(imgId) {
                 top.linkTo(parent.top)
@@ -37,7 +39,7 @@ fun MovieItem(modifier: Modifier) {
         )
 
         Text(
-            text = "Movie Title",
+            text = movieData.title,
             modifier = modifier.constrainAs(titleId) {
                 top.linkTo(imgId.bottom)
                 start.linkTo(parent.start)
@@ -52,8 +54,8 @@ fun MovieItem(modifier: Modifier) {
 @Composable
 fun MovieItemPreview() {
     MovieEncyclopediaTheme {
-        MovieItem(
-            Modifier,
-        )
+//        MovieItem(
+//            Modifier,
+//        )
     }
 }

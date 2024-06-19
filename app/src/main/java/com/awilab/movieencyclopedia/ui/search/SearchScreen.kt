@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
@@ -22,10 +24,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.awilab.domain.model.movie.Movie
 import com.awilab.movieencyclopedia.R
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
@@ -37,6 +41,8 @@ fun SearchScreen(
     navController: NavController,
     vm: SearchViewModel = koinViewModel(),
 ) {
+    val searchUiStatus by vm.uiState.collectAsState()
+
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier.padding(innerPadding),
@@ -54,9 +60,9 @@ fun SearchScreen(
                 )
             }
 
-            MovieItem(
-                Modifier
-                    .padding(innerPadding),
+            ListContent(
+                modifier = Modifier.padding(innerPadding),
+                listData = searchUiStatus.movieList,
             )
         }
     }
@@ -109,4 +115,15 @@ fun SearchField(
             cursorColor = MaterialTheme.colorScheme.onSecondaryContainer,
         ),
     )
+}
+
+@Composable
+fun ListContent(modifier: Modifier, listData: List<Movie>) {
+    LazyColumn(
+        modifier = modifier,
+    ) {
+        items(listData) { movie ->
+            MovieItem(modifier, movie)
+        }
+    }
 }

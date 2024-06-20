@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.jetbrains.kotlin) apply false
     alias(libs.plugins.jetbrains.jvm) apply false
+    alias(libs.plugins.compose.compiler) apply false
 }
 
 buildscript {

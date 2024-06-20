@@ -55,13 +55,14 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":network"))
+    implementation(libs.androidx.material3.android)
+
+    implementation(libs.bundles.paging)
+    testImplementation(libs.test.paging.common)
 
     //region Compose destinations
     ksp(libs.compose.destinations.ksp)
     implementation(libs.compose.destinations.core)
     implementation(libs.compose.destinations.bottom.sheet)
     //endregion
-
-    implementation(libs.bundles.paging)
-    testImplementation(libs.test.paging.common)
 }

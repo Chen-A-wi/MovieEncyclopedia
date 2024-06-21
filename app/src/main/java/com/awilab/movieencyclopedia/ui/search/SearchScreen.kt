@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -118,10 +119,14 @@ fun SearchField(
     )
 }
 
+// TODO: Refactor to Paging3
+
 @Composable
 fun ListContent(modifier: Modifier, listData: List<Movie>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         items(listData) { movie ->
             MovieItem(modifier, movie)

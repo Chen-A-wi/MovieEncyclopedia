@@ -4,4 +4,5 @@ import com.awilab.domain.model.movie.Movie
 
 data class SearchUiStatus(
     val movieList: List<Movie> = emptyList(),
+    val searchPage: Int = 1,
 )

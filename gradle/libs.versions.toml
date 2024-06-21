@@ -11,7 +11,7 @@ junitPlatformConsole = "1.9.3"
 kotlin = "2.0.0"
 kotlinBom = "1.9.20"
 coreKtx = "1.13.1"
-kotlinxSerialization = "1.5.1"
+kotlinxSerialization = "1.6.3"
 kotlinxSerizlizationRetrofit2 = "1.0.0"
 lifecycleRuntimeKtx = "2.8.2"
 junitJunit = "4.13.2"
@@ -21,8 +21,6 @@ lifecycle = "2.8.2"
 material = "1.12.0"
 materialIcon = "1.6.8"
 paging = "3.3.0"
-composeActivity = "1.9.0"
-composeBom = "2024.06.00"
 composeDestinations = "2.1.0-beta01"
 composeConstraintLayout = "1.1.0-alpha13"
 coil = "2.6.0"
@@ -31,7 +29,7 @@ okhttp = "4.12.0"
 retrofit2 = "2.11.0"
 koin = "3.5.6"
 koinCompose = "3.5.5"
-coroutines = "1.8.0"
+coroutines = "1.8.1"
 truth = "1.4.2"
 lifecycleRuntimeComposeAndroid = "2.8.2"
 material3Android = "1.2.1"
@@ -52,15 +50,9 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 # Compose
-#compose-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
-#compose-ui = { module = "androidx.compose.ui:ui" }
-#compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 compose-ui-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
-#compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintLayout" }
-#debug-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
-#debug-compose-tool = { module = "androidx.compose.ui:ui-tooling" }
 compose-coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 # Junit
@@ -114,12 +106,7 @@ truth = { module = "com.google.truth:truth", version.ref = "truth" }
 androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
 
 [bundles]
-#compose = [
-#    "compose-activity", "compose-ui", "compose-ui-graphics", "compose-ui-preview",
-#    "compose-material3", "compose-constraintlayout", "compose-coil", "androidx-lifecycle-viewModelCompose"
-#]
 androidx = ["androidx-core-ktx", "androidx-lifecycle-runtime-ktx"]
-#debug = ["debug-compose-manifest", "debug-compose-tool"]
 test-runtime-only = ["junit-jupiter-engine", "junit-platform-console"]
 android-test = ["androidx-junit", "androidx-espresso-core"]
 test-koin = ["test-koin", "test-koin-junit4", "test-koin-junit5"]

@@ -38,6 +38,11 @@ android {
         }
     }
 
+    composeCompiler {
+        enableStrongSkippingMode = true
+        includeSourceInformation = true
+    }
+
     applicationVariants.all {
         addJavaSourceFoldersToModel(
             File(

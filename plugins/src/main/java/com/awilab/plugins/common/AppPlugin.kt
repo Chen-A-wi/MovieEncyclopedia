@@ -62,7 +62,6 @@ class AppPlugin : Plugin<Project> {
                 "testImplementation"(libs.junit.jupiter.api)
                 "testRuntimeOnly"(libs.bundles.test.runtime.only)
                 "androidTestImplementation"(libs.bundles.android.test)
-//                "debugImplementation"(libs.bundles.debug)
             }
         }
     }

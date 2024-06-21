@@ -24,7 +24,7 @@ fun MovieItem(modifier: Modifier = Modifier, movieData: Movie) {
             contentScale = ContentScale.Fit,
             model = ImageRequest.Builder(LocalContext.current)
                 .crossfade(true)
-                .data("https://image.tmdb.org/t/p/original/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg")
+                .data("https://image.tmdb.org/t/p/w500${movieData.posterPath}")
                 .size(360, 720)
                 .build(),
             contentDescription = stringResource(id = R.string.lab_search),

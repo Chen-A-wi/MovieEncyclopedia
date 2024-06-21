@@ -24,7 +24,6 @@ class SearchViewModel(
     private val searchRepository: SearchRepository,
 ) : ViewModel() {
     val keywordStateFlow = MutableStateFlow("")
-    private val searchPage: MutableStateFlow<Int> = MutableStateFlow(0)
     private val _uiState = MutableStateFlow(initUiState())
     val uiState: StateFlow<SearchUiStatus> = _uiState.asStateFlow()
 
@@ -37,7 +36,7 @@ class SearchViewModel(
             keywordStateFlow.debounce(500)
                 .filter { it.isNotBlank() }
                 .collect { word ->
-                    searchMovieAndTV(word)
+                    searchMovieAndTV(word, _uiState.value.searchPage)
                 }
         }
     }
@@ -48,9 +47,10 @@ class SearchViewModel(
         }
     }
 
-    fun searchMovieAndTV(query: String) {
+    fun searchMovieAndTV(query: String, page: Int) {
         viewModelScope.launch {
-            searchRepository.searchMovies(query = query, page = 1, language = "en").asResult()
+            searchRepository.searchMovies(query = query, page = page, language = "en")
+                .asResult()
                 .flowOn(Dispatchers.IO).collect {
                     when (it) {
                         is Result.Error -> {
@@ -66,7 +66,6 @@ class SearchViewModel(
                                     movieList = it.data.results,
                                 )
                             }
-                            println("=====================${it.data.results.first()}")
                         }
                     }
                 }

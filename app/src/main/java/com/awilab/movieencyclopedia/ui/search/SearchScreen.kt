@@ -10,8 +10,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
@@ -119,8 +120,8 @@ fun SearchField(
 
 @Composable
 fun ListContent(modifier: Modifier, listData: List<Movie>) {
-    LazyColumn(
-        modifier = modifier,
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3),
     ) {
         items(listData) { movie ->
             MovieItem(modifier, movie)

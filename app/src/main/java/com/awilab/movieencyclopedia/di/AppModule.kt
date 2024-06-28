@@ -2,6 +2,7 @@ package com.awilab.movieencyclopedia.di
 
 import com.awilab.data.di.dataModule
 import com.awilab.data.di.servicesModule
+import com.awilab.domain.di.useCaseModule
 import com.awilab.movieencyclopedia.ui.movie.MovieViewModel
 import com.awilab.movieencyclopedia.ui.search.SearchViewModel
 import com.awilab.movieencyclopedia.ui.setting.SettingViewModel
@@ -19,6 +20,7 @@ val viewModule = module {
 
 val appModules = listOf(
     dataModule,
+    useCaseModule,
     viewModule,
     networkModule,
     servicesModule,

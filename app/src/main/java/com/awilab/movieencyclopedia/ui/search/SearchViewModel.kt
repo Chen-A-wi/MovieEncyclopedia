@@ -8,18 +8,18 @@ import com.awilab.movieencyclopedia.R
 import com.awilab.network.response.common.Result
 import com.awilab.network.response.common.asResult
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
+@OptIn(FlowPreview::class)
 class SearchViewModel(
     private val searchRepository: SearchRepository,
 ) : ViewModel() {
@@ -34,8 +34,8 @@ class SearchViewModel(
     init {
         viewModelScope.launch {
             keywordStateFlow.debounce(500)
-                .filter { it.isNotBlank() }
-                .collect { word ->
+                .distinctUntilChanged()
+                .collectLatest { word ->
                     searchMovieAndTV(word, _uiState.value.searchPage)
                 }
         }

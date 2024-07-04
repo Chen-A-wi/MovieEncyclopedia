@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -124,12 +125,13 @@ fun SearchField(
 @Composable
 fun ListContent(modifier: Modifier, listData: List<Movie>) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        columns = GridCells.Adaptive(120.dp),
+        contentPadding = PaddingValues(8.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
     ) {
         items(listData) { movie ->
-            MovieItem(modifier, movie)
+            MovieItem(movie)
         }
     }
 }

@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
@@ -32,6 +31,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.awilab.domain.model.movie.Movie
 import com.awilab.movieencyclopedia.R
 import com.ramcosta.composedestinations.annotation.Destination
@@ -44,8 +45,6 @@ fun SearchScreen(
     navController: NavController,
     vm: SearchViewModel = koinViewModel(),
 ) {
-    val searchUiStatus by vm.uiState.collectAsState()
-
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier.padding(innerPadding),
@@ -57,15 +56,14 @@ fun SearchScreen(
                     .background(color = MaterialTheme.colorScheme.secondaryContainer),
             ) {
                 SearchField(
-                    keyword = vm.keywordStateFlow.collectAsState(initial = "").value,
+                    keyword = vm.searchQuery.collectAsState(initial = "").value,
                     onValueChange = vm::onSearch,
                     onClear = vm::onClear,
                 )
             }
 
             ListContent(
-                modifier = Modifier.padding(innerPadding),
-                listData = searchUiStatus.movieList,
+                listData = vm.searchResults.collectAsLazyPagingItems(),
             )
         }
     }
@@ -120,18 +118,20 @@ fun SearchField(
     )
 }
 
-// TODO: Refactor to Paging3
-
 @Composable
-fun ListContent(modifier: Modifier, listData: List<Movie>) {
+fun ListContent(
+    listData: LazyPagingItems<Movie>,
+) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(120.dp),
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp),
         horizontalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        items(listData) { movie ->
-            MovieItem(movie)
+        items(listData.itemCount) { index ->
+            listData[index]?.let { movie ->
+                MovieItem(movie)
+            }
         }
     }
 }

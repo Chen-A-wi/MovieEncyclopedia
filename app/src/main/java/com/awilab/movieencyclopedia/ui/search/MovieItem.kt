@@ -35,12 +35,27 @@ fun MovieItem(movieData: Movie) {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MovieItemPreview() {
     MovieEncyclopediaTheme {
-//        MovieItem(
-//            Modifier,
-//        )
+        MovieItem(
+            movieData = Movie(
+                isAdult = false,
+                backdropPath = "/5QEtCBM6aXHftr7sgFxxUUl9Ej8.jpg",
+                genreIds = listOf(),
+                id = 0,
+                originalLanguage = "",
+                originalTitle = "",
+                overview = "",
+                popularity = 0.0,
+                posterPath = "",
+                releaseDate = "",
+                title = "",
+                isVideo = false,
+                voteAverage = 0.0,
+                voteCount = 0,
+            ),
+        )
     }
 }

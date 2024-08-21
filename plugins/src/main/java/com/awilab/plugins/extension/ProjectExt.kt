@@ -14,6 +14,7 @@ internal fun Project.configureCompose(commonExtension: BaseExtension){
             "implementation"(libs.koin.compose)
             "implementation"(libs.compose.ui.preview)
             "implementation"(libs.compose.constraintlayout)
+            "implementation"(libs.compose.lottie)
         }
     }
 }

@@ -39,7 +39,7 @@ fun SettingScreen(
                 .clickable {
                 },
         ) {
-            val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.cat_eyes_loading))
+            val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.def_search_animat))
             val progress by animateLottieCompositionAsState(composition)
             LottieAnimation(
                 composition = composition,

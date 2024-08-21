@@ -1,10 +1,10 @@
 [versions]
 androidJunit5 = "1.9.3.0"
-buildGradle = "8.5.0"
-espressoCore = "3.5.1"
+buildGradle = "8.5.2"
+espressoCore = "3.6.1"
 ksp = "2.0.0-1.0.21"
 
-junit = "1.1.5"
+junit = "1.2.1"
 junit5 = "5.9.3"
 junitPlatformConsole = "1.9.3"
 
@@ -13,16 +13,16 @@ kotlinBom = "1.9.20"
 coreKtx = "1.13.1"
 kotlinxSerialization = "1.6.3"
 kotlinxSerizlizationRetrofit2 = "1.0.0"
-lifecycleRuntimeKtx = "2.8.2"
+lifecycleRuntimeKtx = "2.8.4"
 junitJunit = "4.13.2"
 appcompat = "1.7.0"
-lifecycle = "2.8.2"
+lifecycle = "2.8.4"
 
 material = "1.12.0"
 materialIcon = "1.6.8"
-paging = "3.3.0"
+paging = "3.3.2"
 composeDestinations = "2.1.0-beta01"
-composeConstraintLayout = "1.1.0-alpha13"
+composeConstraintLayout = "1.1.0-alpha14"
 coil = "2.6.0"
 
 okhttp = "4.12.0"
@@ -31,7 +31,7 @@ koin = "3.5.6"
 koinCompose = "3.5.5"
 coroutines = "1.8.1"
 truth = "1.4.2"
-lifecycleRuntimeComposeAndroid = "2.8.2"
+lifecycleRuntimeComposeAndroid = "2.8.4"
 material3Android = "1.2.1"
 
 [libraries]

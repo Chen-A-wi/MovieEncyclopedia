@@ -9,6 +9,13 @@ pluginManagement {
     }
 }
 
+// 官方issue rebuild fail，所以略過test
+gradle.startParameter.excludedTaskNames.addAll(
+    gradle.startParameter.taskNames.filter {
+        it.contains("testClasses")
+    }
+)
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
